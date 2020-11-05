@@ -3,12 +3,15 @@ import java.util.*;
 public class StackInt  {
   
   private Stack<Integer> _stack;
+  private StackRestore stackRestore;
+  
   
   /**
    * Constructor.
   */
   public StackInt() {
     _stack = new Stack<Integer>();
+    stackRestore = new StackRestore();
   }
   
   /**
@@ -22,7 +25,8 @@ public class StackInt  {
    * Stack push.
   */
   public int stackpop() {
-    int retInt = _stack.pop();
+    Integer retInt = _stack.pop();
+    //stackRestore.stackpush(retInt); //saving for a rainy day
     return retInt;
   }
   
@@ -35,10 +39,27 @@ public class StackInt  {
   }
   
   /**
-   * checking for empty stack.
+   * Checking for empty stack.
   */
   public int stacksize()  {
     int size = _stack.size();
     return size;
+  }
+  
+  /**
+   * Stack clear.
+  */
+  public void stackclear()  {
+    _stack.clear();
+    stackRestore.stackclear();
+  }
+  
+  /**
+   * Restore the last value popped from the stack.
+  */
+  public int ctrlz()  {
+    int retVal = stackRestore.stackpop();
+    //_stack.push(retVal); //push the restored value back onto the stack
+    return retVal;
   }
 }

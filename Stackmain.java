@@ -7,6 +7,7 @@ public class Stackmain {
   public static void main(String[] args) {
     //create the objects
     StackInt stackInt = new StackInt();
+    StackRestore stackRestore = new StackRestore();
     Scanner scanner = new Scanner(System.in);
     
     //declare variables
@@ -40,7 +41,9 @@ public class Stackmain {
           if (popsize == 0)  { //if the size is 0, tell the user
             System.out.println("Error. Stack empty");
           } else  { //pop a value from the stack
-            System.out.println("int popped: " + stackInt.stackpop());
+            int popVal = stackInt.stackpop();
+            stackRestore.stackpush(popVal);
+            System.out.println("int popped: " + popVal);
           }
           break;
         case "2":
@@ -49,6 +52,24 @@ public class Stackmain {
             System.out.println("Error. Stack empty");
           } else  { //pop a value from the stack
             System.out.println("integer on top: " + stackInt.stackpeek());
+          }
+          case "3":
+            int clearsize = stackInt.stacksize();
+            if (clearsize == 0)  { //if the size is 0, tell the user
+              System.out.println("Error. Stack empty");
+            } else  { //clear the stack
+              stackInt.stackclear();
+              System.out.println("Stack cleared");
+            }
+          break;
+        case "4":
+          int stResSize = stackRestore.stacksize();
+          if (stResSize == 0)  { //if the size is 0, tell the user
+            System.out.println("Error. Nothing to restore");
+          } else  { //give one int back to the main stack
+            int retVal = stackInt.ctrlz();
+            stackInt.stackpush(retVal);
+            System.out.println("Integer restored to stack");
           }
           break;
         case "-1":
@@ -70,7 +91,7 @@ public class Stackmain {
     System.out.println("Type 1 to pop an integer from the stack");
     System.out.println("Type 2 to peek into the stack");
     System.out.println("Type 3 to clear the stack");
-    System.out.println("Type 4 to restore the stack (not yet functional)");
+    System.out.println("Type 4 to restore the last popped int to the stack (not yet functional)");
     System.out.println("Type -1 to exit");
     System.out.println(output);
     System.out.println("");
