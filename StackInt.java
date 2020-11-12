@@ -57,9 +57,5 @@ public class StackInt  {
   /**
    * Restore the last value popped from the stack.
   */
-  public int ctrlz()  {
-    int retVal = stackRestore.stackpop();
-    //_stack.push(retVal); //push the restored value back onto the stack
-    return retVal;
-  }
+  
 }

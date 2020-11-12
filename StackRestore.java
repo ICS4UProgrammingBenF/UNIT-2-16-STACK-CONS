@@ -14,7 +14,7 @@ public class StackRestore  {
   /**
    * User pops from _stack.
   */
-  public void stackpush(Integer anInt) {
+  public void stackpush(int anInt) {
     stRes.push(anInt);
     System.out.println(anInt);
   }

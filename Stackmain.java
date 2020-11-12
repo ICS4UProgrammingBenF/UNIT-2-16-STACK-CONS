@@ -53,21 +53,22 @@ public class Stackmain {
           } else  { //pop a value from the stack
             System.out.println("integer on top: " + stackInt.stackpeek());
           }
-          case "3":
-            int clearsize = stackInt.stacksize();
-            if (clearsize == 0)  { //if the size is 0, tell the user
-              System.out.println("Error. Stack empty");
-            } else  { //clear the stack
-              stackInt.stackclear();
-              System.out.println("Stack cleared");
-            }
+          break;
+        case "3":
+          int clearsize = stackInt.stacksize();
+          if (clearsize == 0)  { //if the size is 0, tell the user
+            System.out.println("Error. Stack empty");
+          } else  { //clear the stack
+            stackInt.stackclear();
+            System.out.println("Stack cleared");
+          }
           break;
         case "4":
           int stResSize = stackRestore.stacksize();
           if (stResSize == 0)  { //if the size is 0, tell the user
             System.out.println("Error. Nothing to restore");
           } else  { //give one int back to the main stack
-            int retVal = stackInt.ctrlz();
+            int retVal = stackRestore.stackpop();
             stackInt.stackpush(retVal);
             System.out.println("Integer restored to stack");
           }
